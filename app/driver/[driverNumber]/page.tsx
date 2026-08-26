@@ -28,7 +28,7 @@ interface AnalysisData {
 async function getLastRace(driverNumber: string): Promise<LastRaceData> {
   const res = await fetch(
     `https://f1-data-bc.vercel.app/api/openf1/drivers/${driverNumber}/last-race`,
-    { next: { revalidate: 300 } }, // Cache for 5 minutes
+    { next: { revalidate: 86400 } }, // 24h -- las carreras son ~semanales, no hace falta refrescar más seguido
   )
 
   if (!res.ok) {
@@ -39,8 +39,11 @@ async function getLastRace(driverNumber: string): Promise<LastRaceData> {
 }
 
 async function getAnalysis(sessionKey: number, driverNumber: string): Promise<AnalysisData> {
+  // Caché de servidor compartida entre TODOS los visitantes (no por navegador) --
+  // el análisis de una carrera ya corrida nunca cambia, así que 24h evita
+  // recalcular con Groq en cada visita y agotar la cuota diaria de tokens.
   const res = await fetch(`https://f1-data-bc.vercel.app/api/openf1/telemetry/${sessionKey}/${driverNumber}/analysis`, {
-    next: { revalidate: 300 },
+    next: { revalidate: 86400 },
   })
 
   if (!res.ok) {
