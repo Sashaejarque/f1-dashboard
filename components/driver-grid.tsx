@@ -30,6 +30,7 @@ export async function DriverGrid() {
         <Link
           key={driver.driver_number}
           href={`/driver/${driver.driver_number}?name=${encodeURIComponent(driver.full_name)}`}
+          prefetch={false}
           className="group relative overflow-hidden rounded-xl bg-card transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20"
           style={{
             borderLeft: `4px solid ${driver.team_colour}`,
