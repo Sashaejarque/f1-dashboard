@@ -1,14 +1,32 @@
 import Link from "next/link"
-import { ChevronLeft } from "lucide-react"
+import { ChevronLeft, Sparkles } from "lucide-react"
 
 interface DriverHeaderProps {
   driverNumber: string
   driverName?: string
   position: number | null
   summary: string
+  cached?: boolean
+  computedAt?: string
+  model?: string
 }
 
-export function DriverHeader({ driverNumber, driverName, position, summary }: DriverHeaderProps) {
+function formatComputedAt(computedAt: string) {
+  return new Date(computedAt).toLocaleString("es-AR", {
+    dateStyle: "medium",
+    timeStyle: "short",
+  })
+}
+
+export function DriverHeader({
+  driverNumber,
+  driverName,
+  position,
+  summary,
+  cached,
+  computedAt,
+  model,
+}: DriverHeaderProps) {
   return (
     <div className="mb-8">
       {/* Back Button */}
@@ -45,10 +63,25 @@ export function DriverHeader({ driverNumber, driverName, position, summary }: Dr
         </div>
 
         {/* Summary */}
-        <div className="border-l-4 border-[#FF1801] pl-4 md:pl-6">
+        <div className="border-l-4 border-[#FF1801] pl-4 md:pl-6 mb-4">
           <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-2 font-bold">Executive Summary</h2>
           <p className="text-lg leading-relaxed text-foreground">{summary}</p>
         </div>
+
+        {/* Badge de IA -- deja claro que es un análisis real, persistido, no mockeado */}
+        {(cached !== undefined || computedAt) && (
+          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-background/50 px-3 py-1.5 text-xs text-muted-foreground">
+            <Sparkles className="w-3.5 h-3.5 text-[#FF1801]" />
+            {cached && computedAt ? (
+              <span>
+                Analizado con IA el <span className="text-foreground font-medium">{formatComputedAt(computedAt)}</span>
+                {model ? <span className="text-muted-foreground"> &middot; {model}</span> : null}
+              </span>
+            ) : (
+              <span>Analizado con IA ahora mismo</span>
+            )}
+          </div>
+        )}
       </div>
     </div>
   )

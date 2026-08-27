@@ -23,6 +23,9 @@ interface AnalysisData {
     race_narrative: string
     next_race_projections: string
   }
+  cached?: boolean
+  computedAt?: string
+  model?: string
 }
 
 async function getLastRace(driverNumber: string): Promise<LastRaceData> {
@@ -75,6 +78,9 @@ async function DriverContent({
           driverName={driverName}
           position={lastRace.position}
           summary={analysis.summary}
+          cached={analysis.cached}
+          computedAt={analysis.computedAt}
+          model={analysis.model}
         />
 
         {/* Key Findings */}
