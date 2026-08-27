@@ -4,7 +4,7 @@ import { ChevronLeft } from "lucide-react"
 interface DriverHeaderProps {
   driverNumber: string
   driverName?: string
-  position: number
+  position: number | null
   summary: string
 }
 
@@ -39,7 +39,7 @@ export function DriverHeader({ driverNumber, driverName, position, summary }: Dr
           <div className="flex items-center gap-3">
             <span className="text-sm text-muted-foreground uppercase tracking-wider">Last Race Position</span>
             <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-[#FF1801] text-white">
-              <span className="text-3xl font-black">P{position}</span>
+              <span className="text-3xl font-black">{position != null ? `P${position}` : "DNF"}</span>
             </div>
           </div>
         </div>

@@ -7,7 +7,7 @@ import { AIAnalyzingLoader } from "@/components/ai-analyzing-loader"
 
 interface LastRaceData {
   session_key: number
-  position: number
+  position: number | null
 }
 
 interface KeyFinding {
