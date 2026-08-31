@@ -1,12 +1,13 @@
 import Link from "next/link"
 import Image from "next/image"
+import { UserRound } from "lucide-react"
 
 interface Driver {
   driver_number: number
   full_name: string
   team_name: string
   team_colour: string
-  headshot_url: string
+  headshot_url?: string
 }
 
 async function getDrivers(): Promise<Driver[]> {
@@ -40,13 +41,22 @@ export async function DriverGrid() {
           <div className="relative aspect-[3/4] bg-gradient-to-b from-card to-background">
             {/* Driver Image */}
             <div className="relative h-full w-full">
-              <Image
-                src={driver.headshot_url || "/placeholder.svg"}
-                alt={driver.full_name}
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-              />
+              {driver.headshot_url ? (
+                <Image
+                  src={driver.headshot_url}
+                  alt={driver.full_name}
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                />
+              ) : (
+                <div
+                  className="flex h-full w-full items-center justify-center"
+                  style={{ backgroundColor: `${driver.team_colour}26` }}
+                >
+                  <UserRound className="h-1/2 w-1/2 text-muted-foreground/50" strokeWidth={1} />
+                </div>
+              )}
 
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
