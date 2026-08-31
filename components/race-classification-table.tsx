@@ -20,7 +20,7 @@ interface RaceClassificationTableProps {
 function formatGap(entry: ClassificationEntry) {
   if (entry.dnf) return "DNF"
   if (typeof entry.gapToLeader === "number") {
-    return entry.gapToLeader === 0 ? "Leader" : `+${entry.gapToLeader.toFixed(3)}s`
+    return entry.gapToLeader === 0 ? "Líder" : `+${entry.gapToLeader.toFixed(3)}s`
   }
   return entry.gapToLeader
 }
@@ -29,10 +29,10 @@ export function RaceClassificationTable({ classification, circuitShortName, year
   return (
     <div className="mb-8">
       <h2 className="text-2xl font-black tracking-tight mb-4 uppercase">
-        Race <span className="text-[#FF1801]">Classification</span>
+        Clasificación de la <span className="text-[#FF1801]">Carrera</span>
       </h2>
       <p className="text-sm text-muted-foreground mb-4">
-        {circuitShortName} {year} &middot; Full field result
+        {circuitShortName} {year} &middot; Resultado completo del campo
       </p>
 
       <div className="bg-card rounded-xl border border-border overflow-hidden">
@@ -41,8 +41,8 @@ export function RaceClassificationTable({ classification, circuitShortName, year
             <thead>
               <tr className="border-b border-border text-muted-foreground uppercase text-xs tracking-wider">
                 <th className="text-left px-4 py-3 font-bold">Pos</th>
-                <th className="text-left px-4 py-3 font-bold">Driver</th>
-                <th className="text-left px-4 py-3 font-bold hidden sm:table-cell">Team</th>
+                <th className="text-left px-4 py-3 font-bold">Piloto</th>
+                <th className="text-left px-4 py-3 font-bold hidden sm:table-cell">Equipo</th>
                 <th className="text-right px-4 py-3 font-bold">Pts</th>
                 <th className="text-right px-4 py-3 font-bold">Gap</th>
               </tr>

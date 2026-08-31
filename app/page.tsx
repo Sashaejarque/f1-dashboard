@@ -123,23 +123,34 @@ async function RaceDashboard() {
 
     return (
       <>
-        <RaceOverviewSummary
-          circuitShortName={results.circuitShortName}
-          year={results.year}
-          summary={overview.summary}
-          cached={overview.cached}
-          computedAt={overview.computedAt}
-          model={overview.model}
-        />
-        <KeyFindings findings={overview.key_findings} />
-        <StrategicReport report={overview.strategic_report} />
-        <RaceClassificationTable
-          classification={results.classification}
-          circuitShortName={results.circuitShortName}
-          year={results.year}
-        />
-        <ChampionshipStandings standings={standings.standings} year={standings.year} />
-        <TyreStrategySection strategies={strategyRows} />
+        <section id="resumen" className="scroll-mt-24">
+          <RaceOverviewSummary
+            circuitShortName={results.circuitShortName}
+            year={results.year}
+            summary={overview.summary}
+            cached={overview.cached}
+            computedAt={overview.computedAt}
+            model={overview.model}
+          />
+          <KeyFindings findings={overview.key_findings} />
+          <StrategicReport report={overview.strategic_report} />
+        </section>
+
+        <section id="clasificacion" className="scroll-mt-24">
+          <RaceClassificationTable
+            classification={results.classification}
+            circuitShortName={results.circuitShortName}
+            year={results.year}
+          />
+        </section>
+
+        <section id="campeonato" className="scroll-mt-24">
+          <ChampionshipStandings standings={standings.standings} year={standings.year} />
+        </section>
+
+        <section id="neumaticos" className="scroll-mt-24">
+          <TyreStrategySection strategies={strategyRows} />
+        </section>
       </>
     )
   } catch (error) {
@@ -177,13 +188,13 @@ export default function HomePage() {
           <RaceDashboard />
         </Suspense>
 
-        {/* Driver Grid */}
-        <div className="mb-6">
+        {/* Grilla de pilotos */}
+        <section id="pilotos" className="scroll-mt-24 mb-6">
           <h2 className="text-2xl font-black tracking-tight mb-2 uppercase">
-            Choose a <span className="text-[#FF1801]">Driver</span>
+            Elegí un <span className="text-[#FF1801]">Piloto</span>
           </h2>
-          <p className="text-muted-foreground mb-6">Elegí un piloto para el análisis individual</p>
-        </div>
+          <p className="text-muted-foreground mb-6">Análisis individual con IA por piloto</p>
+        </section>
         <DriverGrid />
       </div>
     </main>

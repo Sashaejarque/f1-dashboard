@@ -11,7 +11,7 @@ export function StrategicReport({ report }: StrategicReportProps) {
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-black tracking-tight uppercase">
-        Strategic <span className="text-[#FF1801]">Report</span>
+        Reporte <span className="text-[#FF1801]">Estratégico</span>
       </h2>
 
       {/* Race Narrative */}
@@ -20,7 +20,7 @@ export function StrategicReport({ report }: StrategicReportProps) {
           <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-[#FF1801]">
             <FileText className="w-5 h-5 text-white" />
           </div>
-          <h3 className="text-xl font-bold uppercase tracking-wide">Race Narrative</h3>
+          <h3 className="text-xl font-bold uppercase tracking-wide">Narrativa de la Carrera</h3>
         </div>
 
         <div className="space-y-4 text-muted-foreground leading-relaxed font-mono text-sm">
@@ -38,7 +38,7 @@ export function StrategicReport({ report }: StrategicReportProps) {
           <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-[#FF1801]">
             <TrendingUp className="w-5 h-5 text-white" />
           </div>
-          <h3 className="text-xl font-bold uppercase tracking-wide">Next Race Projections</h3>
+          <h3 className="text-xl font-bold uppercase tracking-wide">Proyecciones para la Próxima Carrera</h3>
         </div>
 
         <div className="space-y-4 text-muted-foreground leading-relaxed font-mono text-sm">

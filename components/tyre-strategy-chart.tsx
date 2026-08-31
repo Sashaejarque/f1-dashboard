@@ -14,9 +14,24 @@ const COMPOUND_COLORS: Record<string, string> = {
 const FALLBACK_COMPOUND_COLOR = "#8A8A8A"
 const LEGEND_ORDER = ["SOFT", "MEDIUM", "HARD", "INTERMEDIATE", "WET"]
 
+// Los compuestos vienen de OpenF1 en inglés (vocabulario oficial de Pirelli/F1) --
+// se traduce solo la etiqueta que se muestra, la clave de color/orden queda igual.
+const COMPOUND_LABEL: Record<string, string> = {
+  SOFT: "Blando",
+  MEDIUM: "Medio",
+  HARD: "Duro",
+  INTERMEDIATE: "Intermedio",
+  WET: "Lluvia",
+}
+
 function compoundColor(compound?: string | null) {
   if (!compound) return "transparent"
   return COMPOUND_COLORS[compound] ?? FALLBACK_COMPOUND_COLOR
+}
+
+function compoundLabel(compound?: string | null) {
+  if (!compound) return "—"
+  return COMPOUND_LABEL[compound] ?? compound
 }
 
 export interface StrategyRow {
@@ -38,7 +53,7 @@ function StrategyTooltip({ active, payload }: StrategyTooltipProps) {
     <div className="bg-card border border-border rounded-lg px-3 py-2 shadow-xl text-sm max-w-xs">
       <p className="font-bold text-foreground mb-1">{row.fullName}</p>
       <p className="text-muted-foreground text-xs mb-2">
-        {row.pitStopCount} pit stop{row.pitStopCount === 1 ? "" : "s"}
+        {row.pitStopCount} parada{row.pitStopCount === 1 ? "" : "s"} en boxes
       </p>
       <div className="flex flex-wrap items-center gap-1">
         {row.compoundSequence.map((compound, index) => (
@@ -47,7 +62,7 @@ function StrategyTooltip({ active, payload }: StrategyTooltipProps) {
               className="inline-block w-2.5 h-2.5 rounded-sm border border-border shrink-0"
               style={{ backgroundColor: compoundColor(compound) }}
             />
-            {compound}
+            {compoundLabel(compound)}
             {index < row.compoundSequence.length - 1 && <span className="text-muted-foreground">&rarr;</span>}
           </span>
         ))}
@@ -89,7 +104,7 @@ export function TyreStrategyChart({ strategies }: { strategies: StrategyRow[] })
               className="inline-block w-3 h-3 rounded-sm border border-border"
               style={{ backgroundColor: compoundColor(compound) }}
             />
-            {compound}
+            {compoundLabel(compound)}
           </div>
         ))}
       </div>

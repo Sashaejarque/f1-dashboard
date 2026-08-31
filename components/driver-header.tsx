@@ -29,13 +29,13 @@ export function DriverHeader({
 }: DriverHeaderProps) {
   return (
     <div className="mb-8">
-      {/* Back Button */}
+      {/* Volver */}
       <Link
-        href="/"
+        href="/#pilotos"
         className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-6 group"
       >
         <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-        <span className="text-sm uppercase tracking-wider">Back to Drivers</span>
+        <span className="text-sm uppercase tracking-wider">Volver a Pilotos</span>
       </Link>
 
       {/* Header Card */}
@@ -48,14 +48,14 @@ export function DriverHeader({
               </div>
             )}
             <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-2">
-              DRIVER <span className="text-[#FF1801]">#{driverNumber}</span>
+              PILOTO <span className="text-[#FF1801]">#{driverNumber}</span>
             </h1>
-            <p className="text-muted-foreground text-lg">AI-Powered Race Analysis</p>
+            <p className="text-muted-foreground text-lg">Análisis de Carrera con IA</p>
           </div>
 
-          {/* Position Badge */}
+          {/* Badge de posición */}
           <div className="flex items-center gap-3">
-            <span className="text-sm text-muted-foreground uppercase tracking-wider">Last Race Position</span>
+            <span className="text-sm text-muted-foreground uppercase tracking-wider">Posición en la Última Carrera</span>
             <div className="flex items-center justify-center w-16 h-16 rounded-xl bg-[#FF1801] text-white">
               <span className="text-3xl font-black">{position != null ? `P${position}` : "DNF"}</span>
             </div>
@@ -64,7 +64,7 @@ export function DriverHeader({
 
         {/* Summary */}
         <div className="border-l-4 border-[#FF1801] pl-4 md:pl-6 mb-4">
-          <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-2 font-bold">Executive Summary</h2>
+          <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-2 font-bold">Resumen Ejecutivo</h2>
           <p className="text-lg leading-relaxed text-foreground">{summary}</p>
         </div>
 

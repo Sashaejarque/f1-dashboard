@@ -28,16 +28,14 @@ export function RaceOverviewSummary({
     <div className="mb-8">
       <div className="mb-4">
         <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-2 text-balance">
-          F1 <span className="text-[#FF1801]">DASHBOARD</span>
+          {circuitShortName} <span className="text-[#FF1801]">{year}</span>
         </h1>
-        <p className="text-muted-foreground text-lg">
-          {circuitShortName} {year} &middot; AI-powered race analysis
-        </p>
+        <p className="text-muted-foreground text-lg">Análisis de la última carrera con IA</p>
       </div>
 
       <div className="bg-card rounded-xl p-6 md:p-8 border border-border">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-6">
-          <h2 className="text-xs uppercase tracking-widest text-muted-foreground font-bold">Race Summary</h2>
+          <h2 className="text-xs uppercase tracking-widest text-muted-foreground font-bold">Resumen de la Carrera</h2>
 
           {/* Badge de IA -- deja claro que es un análisis real, persistido, no mockeado */}
           <div className="inline-flex items-center gap-2 self-start rounded-full border border-border bg-background/50 px-3 py-1.5 text-xs text-muted-foreground">

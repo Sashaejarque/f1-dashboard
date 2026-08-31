@@ -119,6 +119,6 @@ export default async function DriverDetailPage({
 
 export function generateMetadata({ params }: { params: Promise<{ driverNumber: string }> }) {
   return {
-    title: "F1 Driver Analysis",
+    title: "Análisis de Piloto F1",
   }
 }

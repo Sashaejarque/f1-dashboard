@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Titillium_Web, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { SiteHeader } from "@/components/site-header"
 import "./globals.css"
 
 const titilliumWeb = Titillium_Web({
@@ -11,8 +12,8 @@ const titilliumWeb = Titillium_Web({
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "F1 Statistics & Analysis",
-  description: "Formula 1 Driver Statistics and AI-Powered Race Analysis",
+  title: "F1 Estadísticas y Análisis",
+  description: "Estadísticas de pilotos de Fórmula 1 y análisis de carrera con IA",
   generator: "v0.app",
   icons: {
     icon: [
@@ -39,8 +40,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body className={`${titilliumWeb.className} antialiased`}>
+        <SiteHeader />
         {children}
         <Analytics />
       </body>

@@ -19,7 +19,7 @@ export function ChampionshipStandings({ standings, year }: ChampionshipStandings
   return (
     <div className="mb-8">
       <h2 className="text-2xl font-black tracking-tight mb-4 uppercase">
-        Championship <span className="text-[#FF1801]">Standings</span> {year}
+        Campeonato <span className="text-[#FF1801]">{year}</span>
       </h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -30,8 +30,8 @@ export function ChampionshipStandings({ standings, year }: ChampionshipStandings
               <thead className="sticky top-0 bg-card">
                 <tr className="border-b border-border text-muted-foreground uppercase text-xs tracking-wider">
                   <th className="text-left px-4 py-3 font-bold">Pos</th>
-                  <th className="text-left px-4 py-3 font-bold">Driver</th>
-                  <th className="text-left px-4 py-3 font-bold hidden sm:table-cell">Team</th>
+                  <th className="text-left px-4 py-3 font-bold">Piloto</th>
+                  <th className="text-left px-4 py-3 font-bold hidden sm:table-cell">Equipo</th>
                   <th className="text-right px-4 py-3 font-bold">Pts</th>
                 </tr>
               </thead>
@@ -65,7 +65,7 @@ export function ChampionshipStandings({ standings, year }: ChampionshipStandings
         {/* Gráfico */}
         <div className="bg-card rounded-xl border border-border p-4 md:p-6">
           <h3 className="text-xs uppercase tracking-widest text-muted-foreground font-bold mb-4">
-            Points by driver
+            Puntos por piloto
           </h3>
           <StandingsPointsChart standings={standings} />
         </div>

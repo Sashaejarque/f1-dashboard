@@ -10,6 +10,12 @@ interface KeyFindingsProps {
   findings: KeyFinding[]
 }
 
+const SEVERITY_LABEL: Record<string, string> = {
+  high: "Alta",
+  med: "Media",
+  low: "Baja",
+}
+
 function getSeverityStyles(severity: string) {
   switch (severity) {
     case "high":
@@ -47,7 +53,7 @@ export function KeyFindings({ findings }: KeyFindingsProps) {
   return (
     <div className="mb-8">
       <h2 className="text-2xl font-black tracking-tight mb-4 uppercase">
-        Key <span className="text-[#FF1801]">Findings</span>
+        Hallazgos <span className="text-[#FF1801]">Clave</span>
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -76,7 +82,7 @@ export function KeyFindings({ findings }: KeyFindingsProps) {
                 <span
                   className={`inline-block px-2 py-1 rounded text-xs font-bold uppercase tracking-wider ${styles.iconColor}`}
                 >
-                  {finding.severity} Priority
+                  Prioridad {SEVERITY_LABEL[finding.severity] ?? finding.severity}
                 </span>
               </div>
             </div>
